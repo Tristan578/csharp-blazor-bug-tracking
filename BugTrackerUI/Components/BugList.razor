@@ -21,14 +21,13 @@
 </table>
 
 @code {
-    [Inject]
-    public IBugService BugService { get; set; }
+        [Inject]
+        public IBugService BugService { get; set; }
 
-    public List<Bug> Bugs;
+    public List<Bug> Bugs { get; set; }
 
     protected override void OnInitialized()
     {
-        Bugs = BugService.GetBugs();
-        Bugs.OrderBy(x => x.Priority);
+        Bugs = BugService.GetBugs().OrderBy(x => x.Priority).ToList();
     }
 }
